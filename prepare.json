@@ -1,0 +1,9 @@
+{
+    "scheme":"/Users/FZ/Documents/sysbench/wordpress.sql",
+    "data":[
+        {
+            "insert":"insert into wp_users(user_login,user_pass,user_nicename,user_email,user_registered,display_name)values('wordpress{n}','$P$BWYGGv2FNbEj1ArFjhlK4XkmVlDc9{n}','wordpress{n}','wordpress{n}@wordpress.com',now(),'wordpres{n}')",
+            "nums":1000
+        }
+    ]
+}
