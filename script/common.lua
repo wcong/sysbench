@@ -73,37 +73,20 @@ function thread_init()
    con = drv:connect()
 end
 
--- Close prepared statements
-function close_statements()
-   if (stmt.begin ~= nil) then
-      stmt.begin:close()
-   end
-   if (stmt.commit ~= nil) then
-      stmt.commit:close()
-   end
-end
+
 
 function thread_done()
-   close_statements()
    con:disconnect()
 end
 
 function cleanup()
    local drv = sysbench.sql.driver()
    local con = drv:connect()
-
-   for i = 1, sysbench.opt.tables do
-      print(string.format("Dropping table 'sbtest%d'...", i))
-      con:query("DROP TABLE IF EXISTS sbtest" .. i )
+   local tables = load_json_file(sysbench.opt.config_json)
+   for i = 1, #tables do
+      print(string.format("Dropping table '".. tables[i] .."'..."))
+      con:query("DROP TABLE IF EXISTS " .. tables[i] )
    end
-end
-
-function begin()
-   stmt.begin:execute()
-end
-
-function commit()
-   stmt.commit:execute()
 end
 
 

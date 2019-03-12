@@ -1,0 +1,10 @@
+{
+    "pages":[
+        {
+            "page":"admin",
+            "sql":[
+                "SELECT * FROM wp_users WHERE user_login = 'wordpress1' LIMIT 1"
+            ]
+        }
+    ]
+}
